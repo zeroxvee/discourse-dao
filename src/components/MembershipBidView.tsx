@@ -19,24 +19,24 @@ export const MembershipBidView = ({ closeModal }) => {
 	// 	functionName: "totalSupply",
 	// });
 
-	const {
-		data,
-		isLoading,
-		isSuccess,
-		write: buyMembership,
-	} = useContractWrite({
-		address: "0x5a87068218B8D8659D26fa67D9502093B4fA5FB1",
-		abi: discourseDaoAbi,
-		functionName: "purchase",
-		args: [
-			ethers.utils.parseEther("0.005"),
-			wallet?.ownedBy,
-			"0xA7F1653E99CdE8f76839C70c64122456AFA5Cf6E",
-			ethers.constants.AddressZero,
-			"0x",
-		],
-		value: ethers.utils.parseEther("0.005"),
-	});
+	// const {
+	// 	data,
+	// 	isLoading,
+	// 	isSuccess,
+	// 	write: buyMembership,
+	// } = useContractWrite({
+	// 	address: "0x5a87068218B8D8659D26fa67D9502093B4fA5FB1",
+	// 	abi: discourseDaoAbi,
+	// 	functionName: "purchase",
+	// 	args: [
+	// 		ethers.utils.parseEther("0.005"),
+	// 		wallet?.ownedBy,
+	// 		"0xA7F1653E99CdE8f76839C70c64122456AFA5Cf6E",
+	// 		ethers.constants.AddressZero,
+	// 		"0x",
+	// 	],
+	// 	value: ethers.utils.parseEther("0.005"),
+	// });
 
 	// Initialize the ethers provider
 	const provider = new ethers.providers.JsonRpcProvider(
