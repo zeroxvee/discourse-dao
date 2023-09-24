@@ -42,24 +42,24 @@ const Header = () => {
 			<div className="container mx-auto flex items-center justify-between">
 				{/* Logo and Project Name */}
 				<Link href={"/"} className="flex items-center space-x-2">
-					<Image src={logo} alt="Logo" className="w-8 h-8" />
-					<span className="text-white text-lg font-semibold">
+					<Image src={logo} alt="Logo" className="w-9 h-9" />
+					<span className="text-white text-xl font-semibold">
 						Discourse DAO
 					</span>
 				</Link>
 
 				{/* Text Links */}
 				<div className="hidden md:flex space-x-4">
-					<a
+					<Link
 						href="#"
 						className="text-white hover:text-purple-200 transition ease-in-out duration-150">
 						Showcase
-					</a>
-					<a
-						href="#"
+					</Link>
+					<Link
+						href="/campaigns"
 						className="text-white hover:text-purple-200 transition ease-in-out duration-150">
 						Campaigns
-					</a>
+					</Link>
 				</div>
 
 				{/* Login Button */}
@@ -83,26 +83,35 @@ const Header = () => {
 					)}
 
 					{wallet && !loading && (
-						<div className="flex gap-1 items-center">
-							<h3 className="text-lg">{wallet.handle}</h3>
-							<div className="w-8 h-8 relative rounded-full">
-								<Image
-									className="rounded-full"
-									src={
-										wallet.picture && wallet.picture.__typename === "MediaSet"
-											? wallet.picture.original.url
-											: ""
-									}
-									alt="Profile Image"
-									fill={true}
-									objectFit="contain"
-								/>
+						<div className="flex items-center">
+							<div className="flex flex-row items-center gap-1">
+								<div className="w-9 h-9 relative rounded-full">
+									<Image
+										className="rounded-full"
+										src={
+											wallet.picture && wallet.picture.__typename === "MediaSet"
+												? wallet.picture.original.url
+												: ""
+										}
+										alt="Profile Image"
+										fill={true}
+										objectFit="contain"
+									/>
+								</div>
+								<div className="flex flex-col">
+									<span className="text-base">{wallet.handle}</span>
+									<span className="text-sm">
+										{wallet.ownedBy.substring(0, 4) +
+											"..." +
+											wallet.ownedBy.substring(wallet.ownedBy.length - 4)}
+									</span>
+								</div>
 							</div>
-							<button
+							{/* <button
 								onClick={logout}
 								className="px-6 py-1 bg-white text-black rounded">
 								Sign out
-							</button>
+							</button> */}
 						</div>
 					)}
 				</div>

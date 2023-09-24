@@ -14,6 +14,8 @@ import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { Spinner } from "@/components/Spinner";
 import DiscourseFeed from "@/components/DiscourseFeed";
+import ProposeCard from "@/components/ProposeCampaignCard";
+import MembershipAuction from "@/components/MembershipAuction";
 
 // export const metadata: Metadata = {
 // 	title: "Discourse DAO",
@@ -55,33 +57,14 @@ export default function Home() {
 		<>
 			<Header />
 			<div className="p-20 bg-white">
-				<h1 className="text-5xl">My Lens App</h1>
-				{!profiles || loading ? (
+				{!wallet || loading ? (
 					<div className="flex justify-center items-center">
 						<Spinner />
 					</div>
 				) : (
-					// 	profiles?.map((profile, index) => (
-					// 		<Link href={`/profile/${profile.handle}`} key={index}>
-					// 			<div className="my-14">
-					// 				{profile.picture &&
-					// 				profile.picture.__typename === "MediaSet" ? (
-					// 					<img
-					// 						src={profile.picture.original.url}
-					// 						width="120"
-					// 						height="120"
-					// 						alt={profile.handle}
-					// 					/>
-					// 				) : (
-					// 					<div className="w-14 h-14 bg-slate-500	" />
-					// 				)}
-					// 				<h3 className="text-3xl my-4">{profile.handle}</h3>
-					// 				<p className="text-xl">{profile.bio}</p>
-					// 			</div>
-					// 		</Link>
-					// 	))
-					// )
-					<DiscourseFeed />
+					<div className="container mx-auto">
+						<MembershipAuction />
+					</div>
 				)}
 			</div>
 		</>
